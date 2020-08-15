@@ -23,21 +23,24 @@ ts_countries <- tc %>%
 years <- c(1962:2018) # this is all
 
 
-# Create the data table
-# This takes a while as it's querying and downloading a lot
+# # Create the data table
+# # This takes a while as it's querying and downloading a lot
 trade_data_raw <- ots_create_tidy_data(
   years = years,
   reporters = ts_countries,
   partners = "all",
   table = "yrp"
-) 
-
-# export trade data
-trade_data_raw %>% 
-  write_rds("data/trade_data_raw.rds")
+)
+# 
+# # export trade data
+# trade_data_raw %>% 
+#   write_rds("data/trade_data_raw.rds")
 
 # Read it in if necessary
-# trade_data_raw <- read_rds("data/trade_data_raw.rds")
+trade_data_raw <- read_rds("data/trade_data_raw.rds")
+
+
+
 
 
 # Create the percentages

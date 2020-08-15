@@ -4,11 +4,12 @@ library(visNetwork)
 library(corpustools)
 
 n_2018 <- trade_data %>% 
+  filter(partner_iso %in% c("ind", "usa", "chn")) %>% 
   filter(year == 2018) %>% 
   transmute(year, 
          from = reporter_fullname_english, 
          to = partner_fullname_english,
-         weight = report_export_pct,
+         weight = export_value_usd,
          value = weight) %>%
   as_tbl_graph()
 
